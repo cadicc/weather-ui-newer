@@ -12,7 +12,6 @@ import HourlyWeather from '~/components/Hourly/index';
 import DayDetail from '~/components/DayDetail/index';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import { TODAY } from '~/common/day';
-import '../Daily/daily.css';
 import {
     dailyCss,
     dailyItemActiveCss,

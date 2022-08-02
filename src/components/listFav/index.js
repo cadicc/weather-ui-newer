@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,12 +15,12 @@ import InvertColorsIcon from '@mui/icons-material/InvertColors';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import { get_fav } from '~/features/favorites/addFavorite';
 import AddIcon from '@mui/icons-material/Add';
+import { listFavDisplayCss, listFavItemsCss, textDecorationCss } from './styles.ts';
 
 const ListFav = () => {
     const favorites = useSelector((state) => state.addFav.value);
     const favList = useSelector((state) => state.addFav.favList);
     const dispatch = useDispatch();
-    console.log(favList);
 
     useEffect(() => {
         favorites.map((fav, index) => {
@@ -44,38 +45,17 @@ const ListFav = () => {
 
     if (favList.length > 0) {
         return (
-            <div
-                className={css`
-                    display: flex;
-                    justify-content: flex-start;
-                `}
-            >
+            <div css={listFavDisplayCss}>
                 {favList.map((item, index) => {
                     return (
                         <div
-                            className={css`
-                                width: 27%;
-                                height: 100%;
-                                background-color: #33c5ff;
-                                background-image: url(${sunlight});
-                                background-size: cover;
-                                background-repeat: no-repeat;
-                                background-position: 70px;
-                                margin: 0 15px;
-                                margin-left: 0;
-
-                                &:hover {
-                                    box-shadow: #ffffff 0px 2px 10px;
-                                }
-                            `}
+                            css={listFavItemsCss}
                             key={index}
                             onClick={() => dispatch(current_weather(item.location.name))}
                         >
                             <Link
                                 to="/"
-                                className={css`
-                                    text-decoration: none;
-                                `}
+                                css={textDecorationCss}
                                 onClick={() => {
                                     dispatch(set_activeHome(true));
                                     dispatch(set_activeHis(false));
@@ -84,7 +64,6 @@ const ListFav = () => {
                             >
                                 <div
                                     className={css`
-                                        // background-image: url(${cloud4});
                                         background-size: contain;
                                         background-repeat: no-repeat;
                                         background-position: right;

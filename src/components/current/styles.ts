@@ -47,3 +47,7 @@ export const currentWeatherTextCss = css({
     padding: '0 10px',
     margin: '5px 0',
 });
+export const dailyItemCircleIconCss = css({
+    width: '10px !important',
+    height: '10px !important',
+});

@@ -5,6 +5,7 @@ import useAxiosCurrent from '~/service/currentApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import AirIcon from '@mui/icons-material/Air';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import {
     currentWeatherCss,
     currentWeatherAlignCss,
@@ -15,6 +16,7 @@ import {
     currentWeatherFeelLikeCss,
     currentWeatherWindCss,
     currentWeatherTextCss,
+    dailyItemCircleIconCss,
 } from './styles.ts';
 
 const CurrentWeather = () => {
@@ -44,7 +46,7 @@ const CurrentWeather = () => {
                             <div css={currentWeatherLineCss}>
                                 <span css={currentWeatherFeelLikeCss}>
                                     <p id="feel_like">{`Feels Like ${current.feelslike_c} `}</p>
-                                    <FontAwesomeIcon id="temp-icon" icon={faCircle} />
+                                    <CircleOutlinedIcon fontSize="small" css={dailyItemCircleIconCss} />
                                 </span>
                                 <div css={currentWeatherWindCss}>
                                     <span>

@@ -12,7 +12,6 @@ const FavoritesWeather = () => {
             <div>
                 <div
                     className={css`
-                        // width: 25%;
                         height: 100%;
                         margin: 0 10px;
                         margin-left: 0;
