@@ -22,4 +22,3 @@ export const listFavItemsCss = css({
 export const textDecorationCss = css({
     textDecoration: 'none',
 });
-export const;
