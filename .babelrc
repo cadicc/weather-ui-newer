@@ -1,0 +1,14 @@
+{
+    "presets": [["@babel/preset-react", { "runtime": "automatic", "importSource": "@emotion/react" }]],
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "alias": {
+                    "~": "./src"
+                }
+            }
+        ],
+        ["@emotion/babel-plugin"]
+    ]
+}
