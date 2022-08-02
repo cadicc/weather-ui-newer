@@ -1,9 +1,11 @@
+/** @jsxImportSource @emotion/react */
 import * as moment from 'moment';
 import { css } from '@emotion/css';
 import useAxiosCurrent from '~/service/currentApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import AirIcon from '@mui/icons-material/Air';
+import { currentWeatherCss, currentWeatherAlignCss } from './styles.ts';
 
 const CurrentWeather = () => {
     const { current, location } = useAxiosCurrent();
@@ -12,22 +14,10 @@ const CurrentWeather = () => {
     if (checkObj === false) {
         return (
             <div>
-                <div
-                    className={css`
-                        display: flex;
-                        justify-items: center;
-                        justify-content: center;
-                        margin: 40px 0;
-                        text-shadow: 1px 1px 3px #000;
-                    `}
-                >
+                <div css={currentWeatherCss}>
                     <div>
-                        <div
-                            className={css`
-                                text-align: center;
-                            `}
-                        >
-                            <p id="location">{`${location.name}, ${location.country}`}</p>
+                        <div css={currentWeatherAlignCss}>
+                            <p>{`${location.name}, ${location.country}`}</p>
                             <div
                                 className={css`
                                     display: flex;
