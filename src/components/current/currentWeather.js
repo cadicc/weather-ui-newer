@@ -19,9 +19,10 @@ import {
     dailyItemCircleIconCss,
 } from './styles.ts';
 
-const CurrentWeather = () => {
+const CurrentWeather = (onCurrent) => {
     const { current, location } = useAxiosCurrent();
     let checkObj = Object.keys(current).length === 0;
+    console.log(onCurrent);
 
     if (checkObj === false) {
         return (
