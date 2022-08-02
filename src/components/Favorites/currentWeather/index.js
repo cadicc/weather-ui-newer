@@ -34,7 +34,6 @@ const CurrentWeather = () => {
                 >
                     <div
                         className={css`
-                            // background-image: url(${cloud4});
                             background-size: contain;
                             background-repeat: no-repeat;
                             background-position: right;

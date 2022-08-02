@@ -1,11 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import * as moment from 'moment';
-import { css } from '@emotion/css';
+// import { css } from '@emotion/react';
 import useAxiosCurrent from '~/service/currentApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import AirIcon from '@mui/icons-material/Air';
-import { currentWeatherCss, currentWeatherAlignCss } from './styles.ts';
+import {
+    currentWeatherCss,
+    currentWeatherAlignCss,
+    currentWeatherTempFielCss,
+    currentWeatherTempCCss,
+    currentWeatherSpaceCss,
+    currentWeatherLineCss,
+    currentWeatherFeelLikeCss,
+    currentWeatherWindCss,
+    currentWeatherTextCss,
+} from './styles.ts';
 
 const CurrentWeather = () => {
     const { current, location } = useAxiosCurrent();
@@ -18,134 +28,46 @@ const CurrentWeather = () => {
                     <div>
                         <div css={currentWeatherAlignCss}>
                             <p>{`${location.name}, ${location.country}`}</p>
-                            <div
-                                className={css`
-                                    display: flex;
-                                    justify-content: center;
-                                    margin: 20px auto;
-                                `}
-                            >
+                            <div css={currentWeatherTempFielCss}>
                                 <img alt="icon-weather" src={current.condition.icon}></img>
-                                <p
-                                    id="temp_c"
-                                    className={css`
-                                        font-weight: 300;
-                                        font-size: 80px;
-                                        margin: 0;
-                                        line-height: 0.7;
-                                    `}
-                                >
+                                <p id="temp_c" css={currentWeatherTempCCss}>
                                     {current.temp_c}
                                 </p>
                                 <FontAwesomeIcon icon={faCircle} id="temp-icon" />
                             </div>
-                            <p
-                                id="condition"
-                                className={css`
-                                    margin: 5px 0;
-                                `}
-                            >
+                            <p id="condition" css={currentWeatherSpaceCss}>
                                 {current.condition.text}
                             </p>
-                            <p
-                                id="Updated"
-                                className={css`
-                                    margin: 5px 0;
-                                `}
-                            >
+                            <p id="Updated" css={currentWeatherSpaceCss}>
                                 {`Updated as of ${moment(current.last_updated, 'YYYY-MM-DD hh:mm').format('hh:mm A')}`}
                             </p>
-                            <div
-                                className={css`
-                                    display: flex;
-                                    justify-content: space-around;
-                                `}
-                            >
-                                <span
-                                    className={css`
-                                        display: flex;
-                                        justify-content: center;
-                                    `}
-                                >
-                                    <p
-                                        id="feel_like"
-                                        className={css`
-                                            padding: 0 2px 0 10px;
-                                            margin: 5px 0;
-                                        `}
-                                    >
-                                        {`Feels Like ${current.feelslike_c} `}
-                                    </p>
-                                    <FontAwesomeIcon
-                                        id="temp-icon"
-                                        icon={faCircle}
-                                        className={css`
-                                            width: 5px;
-                                        `}
-                                    />
+                            <div css={currentWeatherLineCss}>
+                                <span css={currentWeatherFeelLikeCss}>
+                                    <p id="feel_like">{`Feels Like ${current.feelslike_c} `}</p>
+                                    <FontAwesomeIcon id="temp-icon" icon={faCircle} />
                                 </span>
-                                <div
-                                    className={css`
-                                        display: flex;
-                                        align-content: center;
-                                    `}
-                                >
+                                <div css={currentWeatherWindCss}>
                                     <span>
                                         Wind <AirIcon fontSize="small" />
                                     </span>
                                     <span>
-                                        <p
-                                            id="wind"
-                                            className={css`
-                                                padding: 0 10px;
-                                                margin: 5px 0;
-                                            `}
-                                        >
+                                        <p id="wind" css={currentWeatherTextCss}>
                                             {`${current.wind_kph} km/h`}
                                         </p>
                                     </span>
                                 </div>
-                                <p
-                                    id="visibility"
-                                    className={css`
-                                        padding: 0 10px;
-                                        margin: 5px 0;
-                                    `}
-                                >
+                                <p id="visibility" css={currentWeatherTextCss}>
                                     {`Visibility ${current.vis_km} km`}
                                 </p>
                             </div>
-                            <div
-                                className={css`
-                                    display: flex;
-                                    justify-content: space-around;
-                                `}
-                            >
-                                <p
-                                    id="barometer"
-                                    className={css`
-                                        padding: 0 10px;
-                                        margin: 5px 0;
-                                    `}
-                                >
+                            <div css={currentWeatherLineCss}>
+                                <p id="barometer" css={currentWeatherTextCss}>
                                     {`Barometer ${current.pressure_mb} mb`}
                                 </p>
-                                <p
-                                    id="humidity"
-                                    className={css`
-                                        padding: 0 10px;
-                                        margin: 5px 0;
-                                    `}
-                                >
+                                <p id="humidity" css={currentWeatherTextCss}>
                                     {`Humidity ${current.humidity}%`}
                                 </p>
-                                <p
-                                    id="precip"
-                                    className={css`
-                                        padding: 0 10px;
-                                        margin: 5px 0;
-                                    `}
-                                >
+                                <p id="precip" css={currentWeatherTextCss}>
                                     {`Precipitation ${current.precip_mm} mm`}
                                 </p>
                             </div>

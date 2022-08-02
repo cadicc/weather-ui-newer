@@ -1,7 +1,9 @@
+/** @jsxImportSource @emotion/react */
 import { useEffect, useRef } from 'react';
 import { Container } from '@mui/material';
 import * as moment from 'moment';
 import useAxiosCurrent from '~/service/currentApi';
+import { backgroundHomeColorLightCss, backgroundHomeColorDarkCss } from './styles.ts';
 import CurrentWeather from '~/components/current/currentWeather';
 import DailyWeather from '~/components/Daily/index';
 import mist from '~/weatherBackground/mist/mist-reverse.png';
@@ -11,7 +13,6 @@ import cloud3 from '~/weatherBackground/cloud/cloud-3.png';
 import light from '~/weatherBackground/light/light.png';
 import rain4 from '~/weatherBackground/rain/rain4.png';
 import cloudThunder from '~/weatherBackground/cloud/cloud-thunder.png';
-
 import thunder from '~/weatherBackground/lightning/thunder.png';
 
 const Forecast = (props) => {
@@ -76,29 +77,18 @@ const Forecast = (props) => {
         }
     }, [current, condition]);
 
-    useEffect(() => {
-        if (
-            (parseInt(moment().format('h')) >= 1 &&
-                parseInt(moment().format('h')) < 7 &&
-                moment().format('a') === 'pm') ||
-            (parseInt(moment().format('h')) > 6 && moment().format('a') === 'am')
-        ) {
-            weatherRef.current.style.backgroundColor = '#3171af';
-            weatherRef.current.style.fontFamily = '"Inter", sans-serif';
-            weatherRef.current.style.color = '#ffffff';
-            weatherRef.current.style.textShadow = '2px 2px 5px #000000';
-            weatherRef.current.style.minHeight = '1080px';
-        } else {
-            weatherRef.current.style.backgroundColor = '#0b2642';
-            weatherRef.current.style.fontFamily = '"Inter", sans-serif';
-            weatherRef.current.style.color = '#ffffff';
-            weatherRef.current.style.textShadow = '2px 2px 5px #000000';
-            weatherRef.current.style.minHeight = '1080px';
-        }
-    }, [moment().format('h')]);
-
     return (
-        <div ref={weatherRef}>
+        <div
+            ref={weatherRef}
+            css={
+                (parseInt(moment().format('h')) >= 1 &&
+                    parseInt(moment().format('h')) < 7 &&
+                    moment().format('a') === 'pm') ||
+                (parseInt(moment().format('h')) > 6 && moment().format('a') === 'am')
+                    ? backgroundHomeColorLightCss
+                    : backgroundHomeColorDarkCss
+            }
+        >
             <div ref={weatherRefExtra}>
                 <div ref={weatherRefLast}>
                     <Container>
