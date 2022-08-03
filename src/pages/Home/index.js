@@ -34,36 +34,53 @@ const Forecast = (props) => {
     const weatherRefLast = useRef();
 
     const handleBackgroundWeather = useCallback(() => {
-        if (condition === CLEAR) {
-            return clearWeather;
-        } else if (condition === SUNNY) {
-            return sunnyWeather;
-        } else if (condition === LIGHT_RAIN) {
-            return lightRainWeather;
-        } else if (condition === MIST) {
-            return mistWeather;
-        } else if (condition === PARTLY_CLOUDY) {
-            return sunnyWeather;
-        } else if (condition === HEAVY_RAIN_AND_THUNDER) {
-            return partlyCloudyWeather;
-        } else if (condition === PATCHY_RAIN_AND_THUNDER) {
-            return cloudThunderWeather;
-        } else if (condition === THUNDERY_OUTBREAKS_POSSIBLE) {
-            return cloudThunderWeather;
-        } else {
-            return sunnyWeather;
+        switch (condition) {
+            case condition === CLEAR:
+                return clearWeather;
+                break;
+            case condition === SUNNY:
+                return sunnyWeather;
+                break;
+            case condition === LIGHT_RAIN:
+                return lightRainWeather;
+                break;
+            case condition === MIST:
+                return mistWeather;
+                break;
+            case condition === PARTLY_CLOUDY:
+                return sunnyWeather;
+                break;
+            case condition === HEAVY_RAIN_AND_THUNDER:
+                return partlyCloudyWeather;
+                break;
+            case condition === PATCHY_RAIN_AND_THUNDER:
+                return cloudThunderWeather;
+                break;
+            case condition === THUNDERY_OUTBREAKS_POSSIBLE:
+                return cloudThunderWeather;
+                break;
+            default:
+                return sunnyWeather;
+                break;
         }
     }, [condition]);
 
     const handleBackgroundWeatherFilter = useCallback(() => {
-        if (condition === PARTLY_CLOUDY) {
-            return partlyCloudyWeather;
-        } else if (condition === LIGHT_RAIN) {
-            return rainWeather;
-        } else if (condition === HEAVY_RAIN_AND_THUNDER) {
-            return thunderWeather;
-        } else if (condition === PATCHY_RAIN_AND_THUNDER) {
-            return thunderWeather;
+        switch (condition) {
+            case condition === PARTLY_CLOUDY:
+                return partlyCloudyWeather;
+                break;
+            case condition === LIGHT_RAIN:
+                return rainWeather;
+                break;
+            case condition === HEAVY_RAIN_AND_THUNDER:
+                return thunderWeather;
+                break;
+            case condition === PATCHY_RAIN_AND_THUNDER:
+                return thunderWeather;
+                break;
+            default:
+                break;
         }
     }, [condition]);
 
