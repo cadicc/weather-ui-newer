@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/css';
 import * as moment from 'moment';
 import { Container } from '@mui/material';
@@ -7,6 +8,17 @@ import ChartBar from '../Chart';
 import { set_historical } from '~/features/Historical';
 import { set_chart } from '~/features/SwapChart';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import {
+    hisWeatherSetWidth,
+    hisWeatherDistanceContent,
+    hisWeatherDisplay,
+    hisWeatherPrimaryColor,
+    hisWeatherDisplayItem,
+    hisWeatherPadItem,
+    hisWeatherActiveButton,
+    hisWeatherHiddenButton,
+    hisWeatherSelectField,
+} from '~/common/styles.ts';
 
 const Historical = () => {
     const { fore, location } = useAxiosHistory();
@@ -20,109 +32,26 @@ const Historical = () => {
 
     if (data.length > 0) {
         return (
-            <div
-                className={css`
-                    width: 1920px;
-                    height: 1080px;
-                    background-color: #222121;
-                    font-family: 'Manrope', sans-serif !important;
-                `}
-            >
+            <div css={hisWeatherSetWidth}>
                 <Container>
-                    <div
-                        className={css`
-                            padding: 10px 0;
-                            margin: 30px 0 0 30px;
-                        `}
-                    >
-                        <div
-                            className={css`
-                                display: flex;
-                                justify-content: space-between;
-                                align-items: center;
-                            `}
-                        >
+                    <div css={hisWeatherDistanceContent}>
+                        <div css={hisWeatherDisplay}>
                             <div>
-                                <h2
-                                    className={css`
-                                        color: #ffffff;
-                                    `}
-                                >{`${location.name}, ${location.country}`}</h2>
+                                <h2 css={hisWeatherPrimaryColor}>{`${location.name}, ${location.country}`}</h2>
                             </div>
-                            <div
-                                className={css`
-                                    display: flex;
-                                    justify-content: flex-end;
-                                `}
-                            >
-                                <div
-                                    className={css`
-                                        padding: 0 5px;
-                                    `}
-                                >
+                            <div css={hisWeatherDisplayItem}>
+                                <div css={hisWeatherPadItem}>
                                     <button
                                         onClick={() => dispatch(set_chart(true))}
-                                        className={
-                                            active
-                                                ? css`
-                                                      font-family: 'Manrope', sans-serif;
-                                                      border: 0px solid #ffffff9e;
-                                                      border-radius: 0px;
-                                                      padding: 5px;
-                                                      background-color: #ffffff;
-                                                      margin: 0 5px;
-                                                      &:active {
-                                                          background-color: #ffffff;
-                                                      }
-                                                  `
-                                                : css`
-                                                      font-family: 'Manrope', sans-serif;
-                                                      border: 0px solid #ffffff9e;
-                                                      border-radius: 0px;
-                                                      padding: 5px;
-                                                      background-color: #ffffff9e;
-                                                      margin: 0 5px;
-                                                      &:active {
-                                                          background-color: #ffffff;
-                                                      }
-                                                  `
-                                        }
+                                        css={active ? hisWeatherActiveButton : hisWeatherHiddenButton}
                                     >
                                         Temperature
                                     </button>
                                 </div>
-                                <div
-                                    className={css`
-                                        padding: 0 5px;
-                                    `}
-                                >
+                                <div css={hisWeatherPadItem}>
                                     <button
                                         onClick={() => dispatch(set_chart(false))}
-                                        className={
-                                            !active
-                                                ? css`
-                                                      font-family: 'Manrope', sans-serif;
-                                                      border: 0px solid #ffffff9e;
-                                                      border-radius: 0px;
-                                                      padding: 5px;
-                                                      background-color: #ffffff;
-                                                      margin: 0 5px;
-                                                      &:active {
-                                                          background-color: #ffffff;
-                                                      }
-                                                  `
-                                                : css`
-                                                      font-family: 'Manrope', sans-serif;
-                                                      border: 0px solid #ffffff9e;
-                                                      border-radius: 0px;
-                                                      padding: 5px;
-                                                      background-color: #ffffff9e;
-                                                      margin: 0 5px;
-                                                      &:active {
-                                                          background-color: #ffffff;
-                                                      }
-                                                  `
-                                        }
+                                        css={!active ? hisWeatherActiveButton : hisWeatherHiddenButton}
                                     >
                                         Humidity
                                     </button>
@@ -134,12 +63,7 @@ const Historical = () => {
                         <div>
                             <select
                                 onChange={(e) => dispatch(set_historical(e.target.value))}
-                                className={css`
-                                    padding: 5px;
-                                    width: 200px;
-                                    border: none;
-                                    font-family: 'Manrope', sans-serif;
-                                `}
+                                css={hisWeatherSelectField}
                             >
                                 <option value={moment().format('DD')} defaultValue>{`${parseInt(
                                     moment().format('DD'),

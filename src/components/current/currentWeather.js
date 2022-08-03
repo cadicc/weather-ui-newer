@@ -26,7 +26,7 @@ const CurrentWeather = (props) => {
     // const { current, location } = useAxiosCurrent();
     let checkObj = Object.keys(props.onCurrent).length === 0;
 
-    // console.log(currentWeatherTempCCss);
+    console.log(props.onCurrent);
 
     const handleTempCss = () => {
         if (props.type === TYPE_BIG) {
@@ -75,6 +75,8 @@ const CurrentWeather = (props) => {
                 </div>
             </div>
         );
+    } else {
+        <></>;
     }
 };
 

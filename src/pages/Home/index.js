@@ -82,10 +82,10 @@ const Forecast = (props) => {
         <div
             ref={weatherRef}
             css={
-                (parseInt(moment().format('h')) >= 1 &&
-                    parseInt(moment().format('h')) < 7 &&
+                (Number(moment().format('h')) >= 1 &&
+                    Number(moment().format('h')) < 7 &&
                     moment().format('a') === 'pm') ||
-                (parseInt(moment().format('h')) > 6 && moment().format('a') === 'am')
+                (Number(moment().format('h')) > 6 && moment().format('a') === 'am')
                     ? backgroundHomeColorLightCss
                     : backgroundHomeColorDarkCss
             }

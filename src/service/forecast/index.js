@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 
 const useAxios = () => {
-    // const [data, setData] = useState([]);
-    const data = useRef([]);
+    const [data, setData] = useState([]);
+    // const data = useRef([]);
     const currentWeather = useSelector((state) => state.current.value);
     const fetchData = () => {
         axios
@@ -17,8 +17,8 @@ const useAxios = () => {
                 },
             })
             .then((res) => {
-                data.current = res?.data?.forecast?.forecastday || [];
-                // setData(res.data.forecast.forecastday);
+                // data.current = res?.data?.forecast?.forecastday || [];
+                setData(res.data.forecast.forecastday);
             })
             .catch((err) => {
                 alert('Có lỗi!');
@@ -28,6 +28,7 @@ const useAxios = () => {
     useEffect(() => {
         fetchData();
     }, [currentWeather]);
-    return { data: data.current };
+    // return { data: data.current };
+    return { data };
 };
 export default useAxios;

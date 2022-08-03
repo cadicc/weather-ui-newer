@@ -279,3 +279,58 @@ export const dayDetailDefaultIcon = css({
 export const dayDetailTextShadowCss = css({
     textShadow: '1px 1px 2px #000000',
 });
+
+// Historical weather
+export const hisWeatherSetWidth = css({
+    width: '100%',
+    height: '1080px',
+    backgroundColor: '#222121 !important',
+    fontFamily: "'Manrope', sans-serif !important",
+});
+export const hisWeatherDistanceContent = css({
+    padding: '10px 0',
+    margin: '30px 0 0 30px',
+});
+export const hisWeatherDisplay = css({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+});
+export const hisWeatherPrimaryColor = css({
+    color: '#ffffff',
+});
+export const hisWeatherDisplayItem = css({
+    display: 'flex',
+    justifyContent: 'flex-end',
+});
+export const hisWeatherPadItem = css({
+    padding: '0 5px',
+});
+export const hisWeatherActiveButton = css({
+    fontFamily: "'Manrope', sans-serif",
+    border: '0px solid #ffffff9e',
+    borderRadius: '0px',
+    padding: '5px',
+    backgroundColor: '#ffffff',
+    margin: '0 5px',
+    '&:active': {
+        backgroundColor: '#ffffff',
+    },
+});
+export const hisWeatherHiddenButton = css({
+    fontFamily: "'Manrope', sans-serif",
+    border: '0px solid #ffffff9e',
+    borderRadius: '0px',
+    padding: '5px',
+    backgroundColor: '#ffffff9e',
+    margin: '0 5px',
+    '&:active': {
+        backgroundColor: '#ffffff',
+    },
+});
+export const hisWeatherSelectField = css({
+    padding: '5px',
+    width: '200px',
+    border: 'none',
+    fontFamily: "'Manrope', sans-serif",
+});
