@@ -12,3 +12,5 @@ export const PATCHY_RAIN_AND_THUNDER = 'Patchy light rain with thunder';
 export const THUNDERY_OUTBREAKS_POSSIBLE = 'Thundery outbreaks possible';
 
 export const TYPE_BIG = 'Big';
+export const TYPE_MEDIUM = 'Medium';
+export const TYPE_SMALL = 'Small';

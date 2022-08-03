@@ -22,8 +22,8 @@ import {
 } from './styles.ts';
 
 const CurrentWeather = () => {
-    const { current, location } = useAxiosCurrent();
-    let checkObj = Object.keys(current).length === 0;
+    const { currentWeatherRender, location } = useAxiosCurrent();
+    let checkObj = Object.keys(currentWeatherRender).length === 0;
     if (checkObj === false) {
         return (
             <div>
@@ -43,13 +43,15 @@ const CurrentWeather = () => {
                             <div css={conditionFavoriteWeatherCss}>
                                 <div css={maxWidthFavoriteWeatherCss}>
                                     <div>
-                                        <span css={currentTempWeatherCss}>{current.temp_c}</span>
+                                        <span css={currentTempWeatherCss}>{currentWeatherRender.temp_c}</span>
                                         <span>
                                             <CircleOutlinedIcon css={circleIconFavoriteWeatherCss} />
                                         </span>
                                     </div>
                                     <div>
-                                        <p css={textConditionFavoriteWeatherCss}>{current.condition.text}</p>
+                                        <p css={textConditionFavoriteWeatherCss}>
+                                            {currentWeatherRender.condition.text}
+                                        </p>
                                     </div>
                                 </div>
                                 <div css={fontSizeLocationFavoriteWeatherCss}>
@@ -62,7 +64,7 @@ const CurrentWeather = () => {
                                                 margin: 5px 0;
                                             `}
                                         >
-                                            {current.feelslike_c}
+                                            {currentWeatherRender.feelslike_c}
                                         </span>
                                         <span>
                                             <CircleOutlinedIcon css={circleIconSmallerFavoriteWeatherCss} />
@@ -76,7 +78,7 @@ const CurrentWeather = () => {
                                         <span>
                                             <RemoveRedEyeIcon css={iconSmallerFavoriteWeatherCss} />
                                         </span>
-                                        <span>{`${current.vis_km} km`}</span>
+                                        <span>{`${currentWeatherRender.vis_km} km`}</span>
                                     </div>
                                 </div>
                                 <div css={fontSizeLocationFavoriteWeatherCss}>
@@ -84,13 +86,13 @@ const CurrentWeather = () => {
                                         <span>
                                             <AirIcon css={iconSmallerFavoriteWeatherCss} />
                                         </span>
-                                        <span>{`${current.wind_kph} km/h`}</span>
+                                        <span>{`${currentWeatherRender.wind_kph} km/h`}</span>
                                     </div>
                                     <div>
                                         <span>
                                             <InvertColorsIcon css={iconSmallerFavoriteWeatherCss} />
                                         </span>
-                                        <span>{`${current.humidity} %`}</span>
+                                        <span>{`${currentWeatherRender.humidity} %`}</span>
                                     </div>
                                 </div>
                             </div>

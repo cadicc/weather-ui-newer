@@ -7,6 +7,7 @@ import cloud from '~/weatherBackground/cloud/cloud.png';
 import rain4 from '~/weatherBackground/rain/rain4.png';
 import thunder from '~/weatherBackground/lightning/thunder.png';
 import cloudThunder from '~/weatherBackground/cloud/cloud-thunder.png';
+import { TYPE_BIG } from './day';
 
 export const sunnyWeather = css({
     backgroundImage: `url(${light})`,
@@ -49,4 +50,126 @@ export const thunderWeather = css({
 export const cloudThunderWeather = css({
     backgroundImage: `url(${cloudThunder})`,
     backgroundPositionY: 'top',
+});
+
+// Current weather detail
+export const currentWeatherCss = css({
+    display: 'flex',
+    justifyItems: 'center',
+    justifyContent: 'center',
+    margin: '40px 0',
+    textShadow: '1px 1px 3px #000',
+});
+export const currentWeatherAlignCss = css({
+    textAlign: 'center',
+});
+export const currentWeatherTempFielCss = css({
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px auto',
+});
+export const tempWeatherBiggerCss = css({
+    fontSize: '80px',
+    fontWeight: '300',
+    margin: '0',
+    lineHeight: '0.7',
+});
+export const currentWeatherSpaceCss = css({
+    margin: '5px 0',
+});
+export const currentWeatherLineCss = css({
+    display: 'flex',
+    justifyContent: 'space-around',
+});
+export const currentWeatherFeelLikeCss = css({
+    display: 'flex',
+    justifyContent: 'center',
+    p: {
+        padding: '0 2px 0 10px',
+        margin: '5px 0',
+    },
+    FontAwesomeIcon: {
+        width: '5px',
+    },
+});
+export const currentWeatherWindCss = css({
+    display: 'flex',
+    alignContent: 'center',
+});
+export const currentWeatherTextCss = css({
+    padding: '0 10px',
+    margin: '5px 0',
+});
+export const dailyItemCircleIconCss = css({
+    width: '10px !important',
+    height: '10px !important',
+});
+export const currentWindIconCss = css({
+    position: 'relative',
+    top: '4px',
+});
+
+// Daily weather
+export const dailyCss = css({
+    display: 'flex',
+    justifyContent: 'flex-start',
+    margin: '5px 0',
+});
+export const dailyItemActiveCss = css({
+    padding: '20px',
+    margin: '5px',
+    width: '150px',
+    border: '2px solid #ffffff5e',
+    textShadow: '1px 1px 2px #000000',
+    backgroundColor: '#ffffff5e',
+    '&:hover': {
+        border: '2px solid #ffffff',
+        backgroundColor: '#ffffff',
+    },
+    '&:active': {
+        backgroundColor: '#ffffff5e',
+    },
+});
+export const dailyItemCss = css({
+    padding: '20px',
+    margin: '5px',
+    width: '150px',
+    border: '2px solid #ffffff00',
+    textShadow: '1px 1px 2px #000000',
+    '&:hover': {
+        border: '2px solid #ffffff',
+        backgroundColor: '#ffffff',
+    },
+    '&:active': {
+        backgroundColor: '#ffffff5e',
+    },
+});
+export const dailyItemDescriptionCss = css({
+    listStyle: 'none',
+    paddingLeft: '0px',
+});
+export const dailyItemTempMaxCss = css({
+    margin: '0 10px 0 5px',
+    fontWeight: 'bold',
+    fontSize: '16px',
+});
+export const dailyItemTempMinCss = css({
+    margin: '0 5px',
+    fontSize: '14px',
+    opacity: '0.5',
+});
+export const dailyItemCircleIconBiggerCss = css({
+    position: 'absolute',
+    width: '10px !important',
+    height: '10px !important',
+});
+export const dailyItemCircleIconSmallerCss = css({
+    position: 'absolute',
+    width: '7px !important',
+    height: '7px !important',
+});
+
+// Victory Chart
+export const chartFontSizeCss = css({
+    fontSize: '5px',
 });

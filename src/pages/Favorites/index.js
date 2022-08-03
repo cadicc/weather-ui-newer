@@ -1,6 +1,5 @@
 import { css } from '@emotion/css';
 import { Container } from '@mui/material';
-import * as moment from 'moment';
 import CurrentWeather from '~/components/Favorites/currentWeather';
 import FavoritesWeather from '~/components/Favorites/favoriteWeather';
 

@@ -12,12 +12,16 @@ import {
     PATCHY_RAIN_AND_THUNDER,
     THUNDERY_OUTBREAKS_POSSIBLE,
     TYPE_BIG,
+    TYPE_MEDIUM,
+    TYPE_SMALL,
 } from '~/common/day';
 import useAxiosCurrent from '~/service/currentApi';
 import useAxios from '~/service/forecast';
 import { backgroundHomeColorLightCss, backgroundHomeColorDarkCss } from './styles.ts';
 import CurrentWeather from '~/components/current/currentWeather';
 import DailyWeather from '~/components/Daily/index';
+import HourlyWeather from '~/components/Hourly/index';
+import DayDetail from '~/components/DayDetail/index';
 import {
     sunnyWeather,
     clearWeather,
@@ -30,42 +34,32 @@ import {
 } from '~/common/styles.ts';
 
 const Forecast = (props) => {
-    const { current, condition, location } = useAxiosCurrent();
+    const { currentWeatherRender, condition, location } = useAxiosCurrent();
     const { data } = useAxios();
     const weatherRef = useRef();
     const weatherRefExtra = useRef();
     const weatherRefLast = useRef();
-    console.log(data);
 
     const handleBackgroundWeather = useCallback(() => {
         switch (condition) {
             case condition === CLEAR:
                 return clearWeather;
-                break;
             case condition === SUNNY:
                 return sunnyWeather;
-                break;
             case condition === LIGHT_RAIN:
                 return lightRainWeather;
-                break;
             case condition === MIST:
                 return mistWeather;
-                break;
             case condition === PARTLY_CLOUDY:
                 return sunnyWeather;
-                break;
             case condition === HEAVY_RAIN_AND_THUNDER:
                 return partlyCloudyWeather;
-                break;
             case condition === PATCHY_RAIN_AND_THUNDER:
                 return cloudThunderWeather;
-                break;
             case condition === THUNDERY_OUTBREAKS_POSSIBLE:
                 return cloudThunderWeather;
-                break;
             default:
                 return sunnyWeather;
-                break;
         }
     }, [condition]);
 
@@ -73,16 +67,12 @@ const Forecast = (props) => {
         switch (condition) {
             case condition === PARTLY_CLOUDY:
                 return partlyCloudyWeather;
-                break;
             case condition === LIGHT_RAIN:
                 return rainWeather;
-                break;
             case condition === HEAVY_RAIN_AND_THUNDER:
                 return thunderWeather;
-                break;
             case condition === PATCHY_RAIN_AND_THUNDER:
                 return thunderWeather;
-                break;
             default:
                 break;
         }
@@ -105,22 +95,22 @@ const Forecast = (props) => {
                     <div ref={weatherRefLast}>
                         <Container>
                             <CurrentWeather
-                                onCurrent={current}
+                                onCurrent={currentWeatherRender}
                                 hasLocation={location.name}
                                 hasCountry={location.country}
-                                // hasIcon={current.condition.icon}
-                                hasTempC={current.temp_c}
-                                // hasConditionText={current.condition.text}
-                                hasLastUpdate={current.last_updated}
-                                hasFeelLike={current.feelslike_c}
-                                hasWind={current.wind_kph}
-                                hasVis={current.vis_km}
-                                hasPressure={current.pressure_mb}
-                                hasHumidity={current.humidity}
-                                hasPrecip_mm={current.precip_mm}
+                                hasTempC={currentWeatherRender.temp_c}
+                                hasLastUpdate={currentWeatherRender.last_updated}
+                                hasFeelLike={currentWeatherRender.feelslike_c}
+                                hasWind={currentWeatherRender.wind_kph}
+                                hasVis={currentWeatherRender.vis_km}
+                                hasPressure={currentWeatherRender.pressure_mb}
+                                hasHumidity={currentWeatherRender.humidity}
+                                hasPrecip_mm={currentWeatherRender.precip_mm}
                                 type={TYPE_BIG}
                             />
-                            <DailyWeather />
+                            <DailyWeather onForecastWeather={data} type={TYPE_MEDIUM} />
+                            <HourlyWeather type={TYPE_SMALL} onForecastWeatherHourly={data} />
+                            <DayDetail />
                         </Container>
                     </div>
                 </div>

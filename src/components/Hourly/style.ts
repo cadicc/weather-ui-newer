@@ -97,6 +97,3 @@ export const sliderItemTimeCss = css({
     fontSize: '12px',
     fontWeight: 'bold',
 });
-export const chartFontSizeCss = css({
-    fontSize: '5px',
-});

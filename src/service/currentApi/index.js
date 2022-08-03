@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const useAxiosCurrent = () => {
-    const [current, setCurrent] = useState([]);
+    const [currentWeatherRender, setCurrentWeatherRender] = useState([]);
     const [condition, setCondition] = useState({});
     const [location, setLocation] = useState({});
     const currentWeather = useSelector((state) => state.current.value);
@@ -17,7 +17,7 @@ const useAxiosCurrent = () => {
                 },
             })
             .then((res) => {
-                setCurrent(res.data.current);
+                setCurrentWeatherRender(res.data.current);
                 setCondition(res.data.current.condition.text);
                 setLocation(res.data.location);
             })
@@ -30,6 +30,6 @@ const useAxiosCurrent = () => {
         fetchData();
         // eslint-disable-next-line
     }, [currentWeather]);
-    return { current, condition, location };
+    return { currentWeatherRender, condition, location };
 };
 export default useAxiosCurrent;

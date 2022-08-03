@@ -17,6 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
+import VictoryAreaChart from './component/Chart/index';
 // import clsx from 'clsx';
 import {
     slideCss,
@@ -35,28 +36,19 @@ import {
     sliderItemTempSpaceCss,
     sliderItemWindCss,
     sliderItemTimeCss,
-    chartFontSizeCss,
 } from './style.ts';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-// import HourlyWeatherSliderComponent from './component/hourlyWeather/index';
 
-const HourlyWeather = (selectHourlyWeather) => {
-    const { data } = useAxios();
-    let dataChart = data.map((result) => {
-        return result.hour.map((temp) => {
-            return {
-                x: moment(temp.time, 'YYYY-MM-DD hh:mm').format('hh A'),
-                y: temp.temp_c,
-            };
-        });
-    });
+const HourlyWeather = (props) => {
     const showHourly = useSelector((state) => state.hourly.data);
     const swapChart = useSelector((state) => state.chartHourly.value);
     const dispatch = useDispatch();
     const hourlyRef = useRef();
 
-    let selectHourly = selectHourlyWeather.selectHourlyWeather;
+    console.log(props.onForecastWeatherHourly);
+
+    let selectHourly = useSelector((state) => state.hourly.selectHour);
 
     // const handleRenderHourlyWeather = useCallback((showHourly) => {
     //     if (showHourly > hourlyRef.current.children.length) {
@@ -71,18 +63,23 @@ const HourlyWeather = (selectHourlyWeather) => {
     //         hourlyRef.current.children[i].style.display = 'none';
     //     }
     // }, []);
+    const settings = {
+        dots: false,
+        infinity: false,
+        speed: 500,
+        slidesToShow: 10,
+        slidesToScoll: 3,
+        arrow: true,
+    };
 
-    const handleRenderHourlyWeatherSecondWay = useCallback(() => {
-        for (let i = 0; i < data.length; i++) {
+    const handleRenderHourlyWeatherSecondWay = () => {
+        for (let i = 0; i < props.onForecastWeatherHourly.length; i++) {
             if (i === selectHourly) {
                 return (
                     // <HourlyWeatherSliderComponent onSelect={i} />
-                    <div
-                        // id={`hour_${index}`}
-                        css={slideCss}
-                    >
+                    <div css={slideCss}>
                         <Slider {...settings} css={sliderWidthCss}>
-                            {data[i].hour.map((hours, index) => {
+                            {props.onForecastWeatherHourly[i].hour.map((hours, index) => {
                                 return (
                                     <div key={index} css={sliderItemsCss}>
                                         <div>
@@ -116,22 +113,13 @@ const HourlyWeather = (selectHourlyWeather) => {
                 );
             }
         }
-    }, [selectHourlyWeather]);
+    };
 
     useEffect(() => {
         setTimeout(() => {
             // handleRenderHourlyWeather(showHourly);
         }, 100);
     }, [showHourly]);
-
-    const settings = {
-        dots: false,
-        infinity: false,
-        speed: 500,
-        slidesToShow: 10,
-        slidesToScoll: 3,
-        arrow: true,
-    };
 
     return (
         <div>
@@ -165,35 +153,11 @@ const HourlyWeather = (selectHourlyWeather) => {
                 {swapChart === true ? (
                     handleRenderHourlyWeatherSecondWay(selectHourly)
                 ) : (
-                    <VictoryChart height={200} width={1100} css={chartFontSizeCss}>
-                        <VictoryArea
-                            style={{
-                                data: {
-                                    fill: '#ffffff5e',
-                                    fillOpacity: 0.7,
-                                },
-                                labels: {
-                                    fontSize: 15,
-                                    fill: '#ffffff',
-                                },
-                                text: {
-                                    fill: '#ffffff !important',
-                                    fontSize: '12px !important',
-                                    textTransform: 'lowercase',
-                                },
-                            }}
-                            data={dataChart[showHourly]}
-                            labels={({ datum }) => datum.y}
-                        />
-
-                        <VictoryAxis />
-                    </VictoryChart>
+                    <VictoryAreaChart onData={props.onForecastWeatherHourly} />
                 )}
             </div>
         </div>
     );
 };
-
-// HourlyWeather.prototype = {};
 
 export default HourlyWeather;
