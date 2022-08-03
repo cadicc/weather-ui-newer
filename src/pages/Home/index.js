@@ -110,7 +110,7 @@ const Forecast = (props) => {
                             />
                             <DailyWeather onForecastWeather={data} type={TYPE_MEDIUM} />
                             <HourlyWeather type={TYPE_SMALL} onForecastWeatherHourly={data} />
-                            <DayDetail />
+                            <DayDetail onForecastWeatherDetail={data} />
                         </Container>
                     </div>
                 </div>

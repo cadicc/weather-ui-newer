@@ -1,54 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import useAxios from '~/service/forecast';
 import Divider from '@mui/material/Divider';
-import * as moment from 'moment';
-// import { css } from '@emotion/css';
-import { css, jsx } from '@emotion/react/macro';
-import { VictoryChart, VictoryArea, VictoryAxis } from 'victory';
 import { set_chartHourly } from '~/features/SwapHourly';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import { faDroplet, faWind } from '@fortawesome/free-solid-svg-icons';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './index.css';
+// import './index.css';
 import VictoryAreaChart from './component/Chart/index';
-// import clsx from 'clsx';
-import {
-    slideCss,
-    sliderWidthCss,
-    sliderItemsCss,
-    sliderItemImagesCss,
-    buttonDetailCss,
-    buttonSummaryCss,
-    hourlyCss,
-    buttonIconCss,
-    dividerCss,
-    hourlySliderCss,
-    sliderItemIconCss,
-    sliderItemConditionCss,
-    sliderItemTempCss,
-    sliderItemTempSpaceCss,
-    sliderItemWindCss,
-    sliderItemTimeCss,
-} from './style.ts';
+import { buttonDetailCss, buttonSummaryCss, hourlyCss, buttonIconCss, dividerCss, hourlySliderCss } from './style.ts';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import SliderHourlyWeather from './component/Slider/index';
 
 const HourlyWeather = (props) => {
     const showHourly = useSelector((state) => state.hourly.data);
     const swapChart = useSelector((state) => state.chartHourly.value);
     const dispatch = useDispatch();
-    const hourlyRef = useRef();
-
-    console.log(props.onForecastWeatherHourly);
-
     let selectHourly = useSelector((state) => state.hourly.selectHour);
+    const hourlyRef = useRef();
 
     // const handleRenderHourlyWeather = useCallback((showHourly) => {
     //     if (showHourly > hourlyRef.current.children.length) {
@@ -75,42 +42,7 @@ const HourlyWeather = (props) => {
     const handleRenderHourlyWeatherSecondWay = () => {
         for (let i = 0; i < props.onForecastWeatherHourly.length; i++) {
             if (i === selectHourly) {
-                return (
-                    // <HourlyWeatherSliderComponent onSelect={i} />
-                    <div css={slideCss}>
-                        <Slider {...settings} css={sliderWidthCss}>
-                            {props.onForecastWeatherHourly[i].hour.map((hours, index) => {
-                                return (
-                                    <div key={index} css={sliderItemsCss}>
-                                        <div>
-                                            <img
-                                                src={hours.condition.icon}
-                                                alt="icon-hours"
-                                                css={sliderItemImagesCss}
-                                            />
-                                        </div>
-                                        <div>
-                                            {hours.temp_c}
-                                            <CircleOutlinedIcon fontSize="small" css={sliderItemIconCss} />
-                                        </div>
-                                        <div css={sliderItemConditionCss}>{hours.condition.text}</div>
-                                        <div css={sliderItemTempCss}>
-                                            <span>{<FontAwesomeIcon icon={faDroplet} />}</span>
-                                            <span css={sliderItemTempSpaceCss}>{`${hours.chance_of_rain} %`}</span>
-                                        </div>
-                                        <div css={sliderItemWindCss}>
-                                            <span>{<FontAwesomeIcon icon={faWind} />}</span>
-                                            <span css={sliderItemTempSpaceCss}>{`${hours.wind_kph} km/h`}</span>
-                                        </div>
-                                        <div css={sliderItemTimeCss}>
-                                            {moment(hours.time, 'YYYY-MM-DD hh:mm').format('hh A')}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </Slider>
-                    </div>
-                );
+                return <SliderHourlyWeather onForecastWeatherSlider={props.onForecastWeatherHourly} hasI={i} />;
             }
         }
     };
