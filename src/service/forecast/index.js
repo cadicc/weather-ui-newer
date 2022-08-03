@@ -21,7 +21,7 @@ const useAxios = () => {
                 // setData(res.data.forecast.forecastday);
             })
             .catch((err) => {
-                throw new Error('Invaid Syntax~');
+                alert('Có lỗi!');
             })
             .finally(() => {});
     };

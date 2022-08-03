@@ -18,11 +18,12 @@ import {
     currentWeatherTextCss,
     dailyItemCircleIconCss,
 } from './styles.ts';
+import { useEffect } from 'react';
 
-const CurrentWeather = (onCurrent) => {
-    const { current, location } = useAxiosCurrent();
-    let checkObj = Object.keys(current).length === 0;
-    console.log(onCurrent);
+const CurrentWeather = (props) => {
+    // const { current, location } = useAxiosCurrent();
+    let checkObj = Object.keys(props.onCurrent).length === 0;
+    console.log(props.type);
 
     if (checkObj === false) {
         return (
@@ -30,23 +31,23 @@ const CurrentWeather = (onCurrent) => {
                 <div css={currentWeatherCss}>
                     <div>
                         <div css={currentWeatherAlignCss}>
-                            <p>{`${location.name}, ${location.country}`}</p>
+                            <p>{`${props.hasLocation}, ${props.hasCountry}`}</p>
                             <div css={currentWeatherTempFielCss}>
-                                <img alt="icon-weather" src={current.condition.icon}></img>
+                                <img alt="icon-weather" src={props.onCurrent.condition.icon}></img>
                                 <p id="temp_c" css={currentWeatherTempCCss}>
-                                    {current.temp_c}
+                                    {props.hasTempC}
                                 </p>
                                 <FontAwesomeIcon icon={faCircle} id="temp-icon" />
                             </div>
                             <p id="condition" css={currentWeatherSpaceCss}>
-                                {current.condition.text}
+                                {props.onCurrent.condition.text}
                             </p>
                             <p id="Updated" css={currentWeatherSpaceCss}>
-                                {`Updated as of ${moment(current.last_updated, 'YYYY-MM-DD hh:mm').format('hh:mm A')}`}
+                                {`Updated as of ${moment(props.hasLastUpdate, 'YYYY-MM-DD hh:mm').format('hh:mm A')}`}
                             </p>
                             <div css={currentWeatherLineCss}>
                                 <span css={currentWeatherFeelLikeCss}>
-                                    <p id="feel_like">{`Feels Like ${current.feelslike_c} `}</p>
+                                    <p id="feel_like">{`Feels Like ${props.hasFeelLike} `}</p>
                                     <CircleOutlinedIcon fontSize="small" css={dailyItemCircleIconCss} />
                                 </span>
                                 <div css={currentWeatherWindCss}>
@@ -55,23 +56,23 @@ const CurrentWeather = (onCurrent) => {
                                     </span>
                                     <span>
                                         <p id="wind" css={currentWeatherTextCss}>
-                                            {`${current.wind_kph} km/h`}
+                                            {`${props.hasWind} km/h`}
                                         </p>
                                     </span>
                                 </div>
                                 <p id="visibility" css={currentWeatherTextCss}>
-                                    {`Visibility ${current.vis_km} km`}
+                                    {`Visibility ${props.hasVis} km`}
                                 </p>
                             </div>
                             <div css={currentWeatherLineCss}>
                                 <p id="barometer" css={currentWeatherTextCss}>
-                                    {`Barometer ${current.pressure_mb} mb`}
+                                    {`Barometer ${props.hasPressure} mb`}
                                 </p>
                                 <p id="humidity" css={currentWeatherTextCss}>
-                                    {`Humidity ${current.humidity}%`}
+                                    {`Humidity ${props.hasHumidity}%`}
                                 </p>
                                 <p id="precip" css={currentWeatherTextCss}>
-                                    {`Precipitation ${current.precip_mm} mm`}
+                                    {`Precipitation ${props.hasPrecip_mm} mm`}
                                 </p>
                             </div>
                         </div>

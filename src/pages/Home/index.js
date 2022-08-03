@@ -11,8 +11,10 @@ import {
     HEAVY_RAIN_AND_THUNDER,
     PATCHY_RAIN_AND_THUNDER,
     THUNDERY_OUTBREAKS_POSSIBLE,
+    TYPE_BIG,
 } from '~/common/day';
 import useAxiosCurrent from '~/service/currentApi';
+import useAxios from '~/service/forecast';
 import { backgroundHomeColorLightCss, backgroundHomeColorDarkCss } from './styles.ts';
 import CurrentWeather from '~/components/current/currentWeather';
 import DailyWeather from '~/components/Daily/index';
@@ -28,10 +30,12 @@ import {
 } from '~/common/styles.ts';
 
 const Forecast = (props) => {
-    const { current, condition } = useAxiosCurrent();
+    const { current, condition, location } = useAxiosCurrent();
+    const { data } = useAxios();
     const weatherRef = useRef();
     const weatherRefExtra = useRef();
     const weatherRefLast = useRef();
+    console.log(data);
 
     const handleBackgroundWeather = useCallback(() => {
         switch (condition) {
@@ -100,7 +104,22 @@ const Forecast = (props) => {
                 <div ref={weatherRefExtra} css={handleBackgroundWeatherFilter()}>
                     <div ref={weatherRefLast}>
                         <Container>
-                            <CurrentWeather onCurrent={current} />
+                            <CurrentWeather
+                                onCurrent={current}
+                                hasLocation={location.name}
+                                hasCountry={location.country}
+                                // hasIcon={current.condition.icon}
+                                hasTempC={current.temp_c}
+                                // hasConditionText={current.condition.text}
+                                hasLastUpdate={current.last_updated}
+                                hasFeelLike={current.feelslike_c}
+                                hasWind={current.wind_kph}
+                                hasVis={current.vis_km}
+                                hasPressure={current.pressure_mb}
+                                hasHumidity={current.humidity}
+                                hasPrecip_mm={current.precip_mm}
+                                type={TYPE_BIG}
+                            />
                             <DailyWeather />
                         </Container>
                     </div>
