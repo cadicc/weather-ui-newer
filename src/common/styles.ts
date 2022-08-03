@@ -173,6 +173,13 @@ export const dailyItemCircleIconSmallerCss = css({
 export const chartFontSizeCss = css({
     fontSize: '5px',
 });
+export const chartStyleCss = css({
+    tspan: {
+        fill: '#ffffff !important',
+        fontSize: '12px !important',
+        textTransform: 'lowercase',
+    },
+});
 
 // Slider
 export const slideCss = css({

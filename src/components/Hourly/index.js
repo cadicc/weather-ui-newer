@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Divider from '@mui/material/Divider';
 import { set_chartHourly } from '~/features/SwapHourly';
-// import './index.css';
 import VictoryAreaChart from './component/Chart/index';
 import { buttonDetailCss, buttonSummaryCss, hourlyCss, buttonIconCss, dividerCss, hourlySliderCss } from './style.ts';
 import InsertChartIcon from '@mui/icons-material/InsertChart';

@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { css } from '@emotion/css';
 import AllDayDetail from './component/AllDayDetail';
 import SunDayDetail from './component/AstroSunDayDetail';
 import MoonDayDetail from './component/AstroMoonDayDetail';
@@ -13,8 +12,6 @@ import { dayDetailGridCss, dayDetailTextShadowCss } from '~/common/styles.ts';
 const DayDetail = (props) => {
     const showDaily = useSelector((state) => state.daily.show);
     const detailRef = useRef();
-
-    console.log(props.onForecastWeatherDetail);
 
     const handleShowDayDetail = () => {
         for (let i = 0; i < props.onForecastWeatherDetail.length; i++) {

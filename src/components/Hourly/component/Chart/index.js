@@ -1,6 +1,7 @@
+/** @jsxImportSource @emotion/react */
 import { VictoryChart, VictoryArea, VictoryAxis } from 'victory';
 import { useSelector } from 'react-redux';
-import { chartFontSizeCss } from '~/common/styles.ts';
+import { chartFontSizeCss, chartStyleCss } from '~/common/styles.ts';
 import * as moment from 'moment';
 
 const VictoryAreaChart = (props) => {
@@ -14,29 +15,31 @@ const VictoryAreaChart = (props) => {
         });
     });
     return (
-        <VictoryChart height={200} width={1100} css={chartFontSizeCss}>
-            <VictoryArea
-                style={{
-                    data: {
-                        fill: '#ffffff5e',
-                        fillOpacity: 0.7,
-                    },
-                    labels: {
-                        fontSize: 15,
-                        fill: '#ffffff',
-                    },
-                    text: {
-                        fill: '#ffffff !important',
-                        fontSize: '12px !important',
-                        textTransform: 'lowercase',
-                    },
-                }}
-                data={dataChart[showHourly]}
-                labels={({ datum }) => datum.y}
-            />
+        <div css={chartStyleCss}>
+            <VictoryChart height={200} width={1100} css={chartFontSizeCss}>
+                <VictoryArea
+                    style={{
+                        data: {
+                            fill: '#ffffff5e',
+                            fillOpacity: 0.7,
+                        },
+                        labels: {
+                            fontSize: 15,
+                            fill: '#ffffff',
+                        },
+                        text: {
+                            fill: '#ffffff !important',
+                            fontSize: '12px !important',
+                            textTransform: 'lowercase',
+                        },
+                    }}
+                    data={dataChart[showHourly]}
+                    labels={({ datum }) => datum.y}
+                />
 
-            <VictoryAxis />
-        </VictoryChart>
+                <VictoryAxis />
+            </VictoryChart>
+        </div>
     );
 };
 export default VictoryAreaChart;
