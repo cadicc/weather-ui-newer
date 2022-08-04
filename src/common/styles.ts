@@ -7,8 +7,18 @@ import cloud from '~/weatherBackground/cloud/cloud.png';
 import rain4 from '~/weatherBackground/rain/rain4.png';
 import thunder from '~/weatherBackground/lightning/thunder.png';
 import cloudThunder from '~/weatherBackground/cloud/cloud-thunder.png';
-import { fontSize } from '@mui/system';
+import sunlight from '~/weatherBackground/light/sunlight.png';
 
+// Set screen
+export const defaultCss = css({
+    ':root': {
+        '--primary': '#242f9b',
+        '--secondary': '#ffffff',
+        fontFamily: "'Manrope', sans-serif",
+    },
+});
+
+// Current background weather
 export const sunnyWeather = css({
     backgroundImage: `url(${light})`,
     backgroundRepeat: 'no-repeat',
@@ -333,4 +343,178 @@ export const hisWeatherSelectField = css({
     width: '200px',
     border: 'none',
     fontFamily: "'Manrope', sans-serif",
+});
+export const hisWeatherDetailField = css({
+    margin: '10px 0',
+    color: '#ffffff',
+});
+export const hisWeatherDisplayField = css({
+    display: 'flex',
+    justifyContent: 'space-between',
+});
+export const hisWeatherWidthItem = css({
+    width: '200px',
+});
+export const hisWeatherIcon = css({
+    position: 'relative',
+    top: '-5px',
+    width: '10px !important',
+    height: '10px !important',
+});
+
+// Favorite weather
+export const FavWeatherSetScreen = css({
+    width: '1920px',
+    height: '1080px',
+    backgroundColor: '#222121',
+    fontFamily: "'Manrope', sans-serif !important",
+    marginTop: '30px',
+});
+export const FavWeatherDistanceScreen = css({
+    display: 'block',
+    height: '20px',
+});
+export const backgroundFavoriteWeatherCss = css({
+    width: '25%',
+    height: '100%',
+    backgroundColor: '#33c5ff',
+    backgroundImage: `url(${sunlight})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '70px',
+});
+export const backgroundPositionFavoriteWeatherCss = css({
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right',
+});
+export const paddingFavoriteWeatherCss = css({
+    padding: '15px 10px',
+    textShadow: '1px 1px 2px #000000',
+    span: {
+        color: '#ffffff',
+    },
+});
+export const fontSizeLocationFavoriteWeatherCss = css({
+    fontSize: '14px',
+});
+export const conditionFavoriteWeatherCss = css({
+    display: 'flex',
+    color: '#ffffff',
+    justifyContent: 'space-between',
+});
+export const maxWidthFavoriteWeatherCss = css({
+    maxWidth: '40%',
+});
+export const currentTempWeatherCss = css({
+    fontSize: '30px',
+    margin: '5px 0',
+});
+export const circleIconFavoriteWeatherCss = css({
+    position: 'relative',
+    top: '-5px',
+    width: '12px !important',
+    height: '12px !important',
+    marginLeft: '3px',
+    marginBottom: '10px',
+});
+export const textConditionFavoriteWeatherCss = css({
+    margin: '5px 0',
+    fontSize: '14px',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    display: '-webkit-box',
+    '-webkit-box-orient': 'vertical',
+    '-webkit-line-clamp': '1',
+});
+export const thermostatIconFavoriteWeatherCss = css({
+    width: '15px !important',
+    height: '15px !important',
+    marginBottom: '-2px',
+    marginRight: '5px',
+});
+export const circleIconSmallerFavoriteWeatherCss = css({
+    position: 'relative',
+    top: '-5px',
+    width: '10px !important',
+    height: '10px !important',
+    marginLeft: '3px',
+});
+export const iconSmallerFavoriteWeatherCss = css({
+    width: '15px !important',
+    height: '15px !important',
+    marginBottom: '-2px',
+    marginRight: '5px',
+});
+export const favWeatherlistFav = css({
+    height: '100%',
+    margin: '0 10px 0 0',
+});
+export const listFavDisplayCss = css({
+    display: 'flex',
+    justifyContent: 'flex-start',
+});
+export const listFavItemsCss = css({
+    width: '27%',
+    height: '100%',
+    backgroundColor: '#33c5ff',
+    backgroundImage: `url(${sunlight})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '70px',
+    margin: '0 15px',
+    marginLeft: '0',
+    '&:hover': {
+        boxShadow: '#ffffff 0px 2px 10px',
+    },
+});
+export const textDecorationCss = css({
+    textDecoration: 'none',
+});
+export const favWeatherCurrentPad = css({
+    padding: '15px 10px',
+    textShadow: '1px 1px 2px #000000',
+});
+export const favWeatherCurrentFont = css({
+    fontSize: '14px',
+    color: '#ffffff',
+});
+export const favWeatherCurrentDisplay = css({
+    display: 'flex',
+    color: '#ffffff',
+    justifyContent: 'space-between',
+    marginTop: '5px',
+});
+export const favWeatherItemWidth = css({
+    width: '45%',
+});
+export const favWeatherTempCItem = css({
+    fontSize: '30px',
+    margin: '5px 0',
+});
+export const favWeatherDefaultItem = css({
+    width: '25%',
+    height: '100%',
+    backgroundColor: '#33c5ff',
+});
+export const favWeatherItemField = css({
+    width: '55%',
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '14px',
+});
+export const favWeatherMargin = css({
+    margin: '0 5px',
+});
+export const favWeatherItemAdd = css({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '38px 10px',
+    textShadow: '1px 1px 2px #000000',
+});
+export const favWeatherAddIcon = css({
+    width: '50px !important',
+    height: '50px !important',
+    color: '#ffffff',
 });

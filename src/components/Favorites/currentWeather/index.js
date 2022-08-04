@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/css';
 import useAxiosCurrent from '~/service/currentApi';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -19,7 +18,9 @@ import {
     thermostatIconFavoriteWeatherCss,
     circleIconSmallerFavoriteWeatherCss,
     iconSmallerFavoriteWeatherCss,
-} from './styles.ts';
+    hisWeatherPrimaryColor,
+    currentWeatherSpaceCss,
+} from '~/common/styles.ts';
 
 const CurrentWeather = () => {
     const { currentWeatherRender, location } = useAxiosCurrent();
@@ -27,13 +28,7 @@ const CurrentWeather = () => {
     if (checkObj === false) {
         return (
             <div>
-                <h2
-                    className={css`
-                        color: #ffffff;
-                    `}
-                >
-                    Weather
-                </h2>
+                <h2 css={hisWeatherPrimaryColor}>Weather</h2>
                 <div css={backgroundFavoriteWeatherCss}>
                     <div css={backgroundPositionFavoriteWeatherCss}>
                         <div css={paddingFavoriteWeatherCss}>
@@ -59,22 +54,12 @@ const CurrentWeather = () => {
                                         <span>
                                             <DeviceThermostatIcon css={thermostatIconFavoriteWeatherCss} />
                                         </span>
-                                        <span
-                                            className={css`
-                                                margin: 5px 0;
-                                            `}
-                                        >
-                                            {currentWeatherRender.feelslike_c}
-                                        </span>
+                                        <span css={currentWeatherSpaceCss}>{currentWeatherRender.feelslike_c}</span>
                                         <span>
                                             <CircleOutlinedIcon css={circleIconSmallerFavoriteWeatherCss} />
                                         </span>
                                     </div>
-                                    <div
-                                        className={css`
-                                            margin: 5px 0;
-                                        `}
-                                    >
+                                    <div css={currentWeatherSpaceCss}>
                                         <span>
                                             <RemoveRedEyeIcon css={iconSmallerFavoriteWeatherCss} />
                                         </span>
@@ -101,6 +86,8 @@ const CurrentWeather = () => {
                 </div>
             </div>
         );
+    } else {
+        <></>;
     }
 };
 export default CurrentWeather;

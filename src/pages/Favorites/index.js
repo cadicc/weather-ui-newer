@@ -1,26 +1,15 @@
+/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/css';
 import { Container } from '@mui/material';
 import CurrentWeather from '~/components/Favorites/currentWeather';
 import FavoritesWeather from '~/components/Favorites/favoriteWeather';
+import { FavWeatherSetScreen, FavWeatherDistanceScreen } from '~/common/styles.ts';
 
 const Favorites = () => {
     return (
-        <div
-            className={css`
-                width: 1920px;
-                height: 1080px;
-                background-color: #222121;
-                font-family: 'Manrope', sans-serif !important;
-                margin-top: 30px;
-            `}
-        >
+        <div css={FavWeatherSetScreen}>
             <Container>
-                <div
-                    className={css`
-                        display: block;
-                        height: 20px;
-                    `}
-                ></div>
+                <div css={FavWeatherDistanceScreen}></div>
                 <CurrentWeather />
                 <FavoritesWeather />
             </Container>

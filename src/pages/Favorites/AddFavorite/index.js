@@ -146,45 +146,9 @@ const AddFavorite = () => {
                                     outline: none;
                                 }
                             `}
-                        ></input>
+                        />
                     </HeadlessTippy>
                 </div>
-                {/* <div>
-                    <Autocomplete
-                        disablePortal
-                        options={
-                            [
-                                { label: 'The Godfather', id: 1 },
-                                { label: 'Pulp Fiction', id: 2 },
-                            ]
-                            // searchApi.map((data) => {
-                            //     return [{ label: data.name, id: data.id }];
-                            // })
-                        }
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                label="Search location"
-                                // onChange={(e) => {
-                                //     setSearchInput(e.target.value);
-                                //     dispatch(set_value(e.target.value));
-                                // }}
-                            />
-                        )}
-                        className={css`
-                            margin-top: 20px;
-                            & label {
-                                color: #ffffff;
-                            }
-                            & fieldset {
-                                border-color: #ffffff5e;
-                                &:hover {
-                                    border-color: #ffffff;
-                                }
-                            }
-                        `}
-                    />
-                </div> */}
             </Container>
         </div>
     );

@@ -1,22 +1,13 @@
-import { css } from '@emotion/css';
-import ListFav from '~/components/listFav';
+/** @jsxImportSource @emotion/react */
+import ListFav from '../listFav';
+import { hisWeatherPrimaryColor, favWeatherlistFav } from '~/common/styles.ts';
 
 const FavoritesWeather = () => {
     return (
-        <div
-            className={css`
-                color: #ffffff;
-            `}
-        >
+        <div css={hisWeatherPrimaryColor}>
             <h2>Favorites Weather</h2>
             <div>
-                <div
-                    className={css`
-                        height: 100%;
-                        margin: 0 10px;
-                        margin-left: 0;
-                    `}
-                >
+                <div css={favWeatherlistFav}>
                     <ListFav />
                 </div>
             </div>

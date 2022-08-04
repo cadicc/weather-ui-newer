@@ -1,37 +1,37 @@
 /** @jsxImportSource @emotion/react */
-import { useCallback, useEffect, useRef } from 'react';
 import { Container } from '@mui/material';
 import * as moment from 'moment';
+import { useCallback, useRef } from 'react';
 import {
-    SUNNY,
     CLEAR,
-    MIST,
-    LIGHT_RAIN,
-    PARTLY_CLOUDY,
     HEAVY_RAIN_AND_THUNDER,
+    LIGHT_RAIN,
+    MIST,
+    PARTLY_CLOUDY,
     PATCHY_RAIN_AND_THUNDER,
+    SUNNY,
     THUNDERY_OUTBREAKS_POSSIBLE,
     TYPE_BIG,
     TYPE_MEDIUM,
     TYPE_SMALL,
 } from '~/common/day';
-import useAxiosCurrent from '~/service/currentApi';
-import useAxios from '~/service/forecast';
-import { backgroundHomeColorLightCss, backgroundHomeColorDarkCss } from './styles.ts';
-import CurrentWeather from '~/components/current/currentWeather';
-import DailyWeather from '~/components/Daily/index';
-import HourlyWeather from '~/components/Hourly/index';
-import DayDetail from '~/components/DayDetail/index';
 import {
-    sunnyWeather,
     clearWeather,
-    mistWeather,
+    cloudThunderWeather,
     lightRainWeather,
+    mistWeather,
     partlyCloudyWeather,
     rainWeather,
+    sunnyWeather,
     thunderWeather,
-    cloudThunderWeather,
 } from '~/common/styles.ts';
+import CurrentWeather from '~/components/current/currentWeather';
+import DailyWeather from '~/components/Daily/index';
+import DayDetail from '~/components/DayDetail/index';
+import HourlyWeather from '~/components/Hourly/index';
+import useAxiosCurrent from '~/service/currentApi';
+import useAxios from '~/service/forecast';
+import { backgroundHomeColorDarkCss, backgroundHomeColorLightCss } from './styles.ts';
 
 const Forecast = (props) => {
     const { currentWeatherRender, condition, location } = useAxiosCurrent();
