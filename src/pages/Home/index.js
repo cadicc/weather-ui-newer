@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Container } from '@mui/material';
 import * as moment from 'moment';
-import { useCallback, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import {
     CLEAR,
     HEAVY_RAIN_AND_THUNDER,
@@ -36,11 +36,8 @@ import { backgroundHomeColorDarkCss, backgroundHomeColorLightCss } from './style
 const Forecast = (props) => {
     const { currentWeatherRender, condition, location } = useAxiosCurrent();
     const { data } = useAxios();
-    const weatherRef = useRef();
-    const weatherRefExtra = useRef();
-    const weatherRefLast = useRef();
 
-    const handleBackgroundWeather = useCallback(() => {
+    const handleBackgroundWeather = useMemo(() => {
         switch (condition) {
             case condition === CLEAR:
                 return clearWeather;
@@ -63,7 +60,7 @@ const Forecast = (props) => {
         }
     }, [condition]);
 
-    const handleBackgroundWeatherFilter = useCallback(() => {
+    const handleBackgroundWeatherFilter = useMemo(() => {
         switch (condition) {
             case condition === PARTLY_CLOUDY:
                 return partlyCloudyWeather;
@@ -80,7 +77,6 @@ const Forecast = (props) => {
 
     return (
         <div
-            ref={weatherRef}
             css={
                 (Number(moment().format('h')) >= 1 &&
                     Number(moment().format('h')) < 7 &&
@@ -90,9 +86,9 @@ const Forecast = (props) => {
                     : backgroundHomeColorDarkCss
             }
         >
-            <div css={handleBackgroundWeather()}>
-                <div ref={weatherRefExtra} css={handleBackgroundWeatherFilter()}>
-                    <div ref={weatherRefLast}>
+            <div css={handleBackgroundWeather}>
+                <div css={handleBackgroundWeatherFilter}>
+                    <div>
                         <Container>
                             <CurrentWeather
                                 onCurrent={currentWeatherRender}

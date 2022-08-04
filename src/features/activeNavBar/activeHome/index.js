@@ -8,17 +8,23 @@ export const activeNavSlice = createSlice({
         favorite: false,
     },
     reducers: {
-        set_activeHome: (state, action) => {
+        SET_HOME_ACTIVE: (state, action) => {
             state.home = action.payload;
+            state.history = !action.payload;
+            state.favorite = !action.payload;
         },
-        set_activeHis: (state, action) => {
+        SET_HISTORY_ACTIVE: (state, action) => {
             state.history = action.payload;
+            state.home = !action.payload;
+            state.favorite = !action.payload;
         },
-        set_activeFav: (state, action) => {
+        SET_FAVORITE_ACTIVE: (state, action) => {
             state.favorite = action.payload;
+            state.home = !action.payload;
+            state.history = !action.payload;
         },
     },
 });
 
-export const { set_activeHome, set_activeHis, set_activeFav } = activeNavSlice.actions;
+export const { SET_HOME_ACTIVE, SET_HISTORY_ACTIVE, SET_FAVORITE_ACTIVE } = activeNavSlice.actions;
 export default activeNavSlice.reducer;

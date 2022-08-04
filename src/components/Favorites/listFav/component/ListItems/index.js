@@ -19,10 +19,17 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import InvertColorsIcon from '@mui/icons-material/InvertColors';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { SET_HOME_ACTIVE } from '~/features/activeNavBar/activeHome';
+import { ACTIVE_TRUE } from '~/common/day';
+import { useDispatch } from 'react-redux';
 
 const ListItemsFavWeather = (props) => {
+    const dispatch = useDispatch();
+    // const handleSwitchNavBar = () => {
+    // dispatch(SET_HOME_ACTIVE(ACTIVE_TRUE));
+    // };
     return (
-        <div css={favWeatherCurrentPad}>
+        <div css={favWeatherCurrentPad} onClick={dispatch(SET_HOME_ACTIVE(ACTIVE_TRUE))}>
             <span
                 css={favWeatherCurrentFont}
             >{`${props.hasItem.location.name}, ${props.hasItem.location.country}`}</span>

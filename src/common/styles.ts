@@ -18,6 +18,171 @@ export const defaultCss = css({
     },
 });
 
+// Header
+export const headerDisplay = css({
+    display: 'flex',
+});
+export const headerNavigation = css({
+    position: 'fixed',
+    display: 'flex',
+    justifyContent: 'center',
+    width: '3%',
+    height: '3.2%',
+    backgroundColor: '#1f1f1f',
+    top: '0',
+    left: '0',
+    padding: '10px 0',
+});
+export const headerPosition = css({
+    display: 'flex',
+    backgroundColor: '#20253d',
+    position: 'fixed',
+    width: '96.5%',
+    top: '0',
+    right: '0',
+    zIndex: '1',
+    alignItems: 'center',
+    color: '#ffffff',
+    padding: '5px',
+});
+export const headerTitleWidth = css({
+    width: '67%',
+});
+export const headerSearchWidth = css({
+    width: '30%',
+});
+export const headerTitleFontSize = css({
+    fontWeight: 'bold',
+    fontSize: '14px',
+    paddingLeft: '10px',
+});
+export const headerSearchPosition = css({
+    display: 'flex',
+    justifyContent: 'flex-end',
+});
+export const headerSearchPadding = css({
+    padding: '5px',
+});
+export const headerSearchList = css({
+    listStyle: 'none',
+    backgroundColor: '#ffffff9e',
+    margin: '0',
+    padding: '0',
+    color: '#000',
+    cursor: 'pointer',
+    width: '217px',
+    marginLeft: '17px',
+    marginTop: '-3px',
+});
+export const headerSearchInput = css({
+    border: '0px',
+    padding: '7px 5px',
+    height: '50%',
+    width: '125%',
+    '&:focus-visible': {
+        outline: 'none',
+    },
+});
+export const headerSearchIcon = css({
+    position: 'absolute',
+    right: '10px',
+    top: '10px',
+});
+export const headerSearchIconColor = css({
+    color: '#000',
+});
+
+// Navbar
+export const navbarPosition = css({
+    position: 'fixed',
+    display: 'flex',
+    height: '95%',
+    width: '3%',
+    left: '0',
+    bottom: '0',
+    backgroundColor: '#1f1f1f',
+});
+export const navbarDisplayItem = css({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '10px 5px',
+    '&:hover': {
+        backgroundColor: '#ffffff5e',
+    },
+});
+export const navbarActionItem = css({
+    position: 'absolute',
+    width: '8%',
+    height: '48px',
+    top: '0',
+    left: '0',
+    backgroundColor: '#239df2',
+});
+export const navbarActionItemHis = css({
+    position: 'absolute',
+    width: '8%',
+    height: '48px',
+    top: '48px',
+    left: '0',
+    backgroundColor: '#239df2',
+});
+export const navbarActionItemFav = css({
+    position: 'absolute',
+    width: '8%',
+    height: '48px',
+    top: '96px',
+    left: '0',
+    backgroundColor: '#239df2',
+});
+export const navbarPositionDetail = css({
+    position: 'fixed',
+    display: 'flex',
+    height: '95%',
+    width: '11%',
+    left: '0',
+    bottom: '0',
+    backgroundColor: '#1f1f1f',
+});
+export const navbarDisplayItemDetail = css({
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    padding: '10px 5px',
+    '&:hover': {
+        backgroundColor: '#ffffff5e',
+    },
+});
+export const navbarActionItemDetail = css({
+    position: 'absolute',
+    width: '2.5%',
+    height: '48px',
+    top: '0',
+    left: '0',
+    backgroundColor: '#239df2',
+});
+export const navbarActionItemDetailHis = css({
+    position: 'absolute',
+    width: '2.5%',
+    height: '48px',
+    top: '48px',
+    left: '0',
+    backgroundColor: '#239df2',
+});
+export const navbarActionItemDetailFav = css({
+    position: 'absolute',
+    width: '2.5%',
+    height: '48px',
+    top: '96px',
+    left: '0',
+    backgroundColor: '#239df2',
+});
+export const navbarStyleItem = css({
+    marginLeft: '10px',
+    color: '#fff',
+    fontWeight: 'bold',
+});
+
 // Current background weather
 export const sunnyWeather = css({
     backgroundImage: `url(${light})`,
@@ -486,7 +651,7 @@ export const favWeatherCurrentDisplay = css({
     marginTop: '5px',
 });
 export const favWeatherItemWidth = css({
-    width: '45%',
+    width: '40%',
 });
 export const favWeatherTempCItem = css({
     fontSize: '30px',
@@ -497,11 +662,18 @@ export const favWeatherDefaultItem = css({
     height: '100%',
     backgroundColor: '#33c5ff',
 });
+export const favWeatherDisable = css({
+    pointerEvents: 'none',
+    opacity: '0.4',
+    width: '25%',
+    height: '100%',
+    backgroundColor: '#33c5ff',
+});
 export const favWeatherItemField = css({
-    width: '55%',
+    width: '60%',
     display: 'flex',
     justifyContent: 'center',
-    fontSize: '14px',
+    fontSize: '12px',
 });
 export const favWeatherMargin = css({
     margin: '0 5px',
@@ -517,4 +689,50 @@ export const favWeatherAddIcon = css({
     width: '50px !important',
     height: '50px !important',
     color: '#ffffff',
+});
+
+// Add favorite weather
+export const addFavWeatherIconBack = css({
+    color: '#ffffff',
+    textDecoration: 'none',
+    '&:hover': {
+        'text-decoration': 'underline',
+    },
+});
+export const addFavWeatherPositionIconBack = css({
+    position: 'relative',
+    top: '5px',
+    marginRight: '3px',
+});
+export const addFavWeatherAlignSearchInput = css({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+});
+export const addFavWeatherListSearch = css({
+    listStyle: 'none',
+    backgroundColor: '#ffffff9e',
+    margin: '0',
+    padding: '0',
+    color: '#000',
+    cursor: 'pointer',
+    width: '1152px',
+    marginTop: '-10px',
+});
+export const addFavWeatherPadItem = css({
+    padding: '5px',
+    '&:hover': {
+        backgroundColor: '#ffffffc4',
+    },
+});
+export const addFavWeatherInput = css({
+    border: '0px',
+    padding: '15px 5px',
+    height: '50%',
+    width: '125%',
+    fontSize: '14px',
+    '&:focus-visible': {
+        outline: 'none',
+    },
 });

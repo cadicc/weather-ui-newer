@@ -25,12 +25,6 @@ import { TYPE_BIG } from '~/common/day';
 const CurrentWeather = (props) => {
     let checkObj = Object.keys(props.onCurrent).length === 0;
 
-    const handleTempCss = () => {
-        if (props.type === TYPE_BIG) {
-            return tempWeatherBiggerCss;
-        }
-    };
-
     if (checkObj === false) {
         return (
             <div>
@@ -40,7 +34,7 @@ const CurrentWeather = (props) => {
                             <p>{`${props.hasLocation}, ${props.hasCountry}`}</p>
                             <div css={currentWeatherTempFielCss}>
                                 <img alt="icon-weather" src={props.onCurrent.condition.icon}></img>
-                                <p css={handleTempCss()}>{props.hasTempC}</p>
+                                <p css={tempWeatherBiggerCss}>{props.hasTempC}</p>
                                 <FontAwesomeIcon icon={faCircle} css={currentWindIconCss} />
                             </div>
                             <p css={currentWeatherSpaceCss}>{props.onCurrent.condition.text}</p>
@@ -73,7 +67,7 @@ const CurrentWeather = (props) => {
             </div>
         );
     } else {
-        <></>;
+        return <></>;
     }
 };
 

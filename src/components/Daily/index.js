@@ -1,10 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useSelector } from 'react-redux';
-import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as moment from 'moment';
-import useAxios from '~/service/forecast';
 import { get_hour, SELECT_HOUR } from '~/features/Hourly';
 import { set_api } from '~/features/DailyWeather';
 import { set_daily } from '~/features/activeDaily';

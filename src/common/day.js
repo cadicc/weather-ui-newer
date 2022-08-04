@@ -14,3 +14,6 @@ export const THUNDERY_OUTBREAKS_POSSIBLE = 'Thundery outbreaks possible';
 export const TYPE_BIG = 'Big';
 export const TYPE_MEDIUM = 'Medium';
 export const TYPE_SMALL = 'Small';
+
+export const ACTIVE_TRUE = true;
+export const ACTIVE_FALSE = false;

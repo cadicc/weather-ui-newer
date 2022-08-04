@@ -16,7 +16,7 @@ const useAxiosSearch = () => {
                 setSearchApi(res.data);
             })
             .catch((err) => {
-                console.log('Nhập địa tìm kiếm');
+                console.log(err);
             })
             .finally(() => {});
     };

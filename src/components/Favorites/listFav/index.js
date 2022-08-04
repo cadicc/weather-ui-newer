@@ -12,8 +12,9 @@ import {
     favWeatherDefaultItem,
     favWeatherItemAdd,
     favWeatherAddIcon,
+    favWeatherDisable,
 } from '~/common/styles.ts';
-import { set_activeFav, set_activeHis, set_activeHome } from '~/features/activeNavBar/activeHome';
+// import { set_activeFav, set_activeHis, set_activeHome } from '~/features/activeNavBar/activeHome';
 import { current_weather } from '~/features/Current';
 import { get_fav } from '~/features/favorites/addFavorite';
 
@@ -21,6 +22,13 @@ const ListFav = () => {
     const favorites = useSelector((state) => state.addFav.value);
     const favList = useSelector((state) => state.addFav.favList);
     const dispatch = useDispatch();
+    const handleDisable = () => {
+        if (favList.length >= 3) {
+            return favWeatherDisable;
+        } else {
+            return favWeatherDefaultItem;
+        }
+    };
 
     useEffect(() => {
         favorites.map((fav) => {
@@ -44,12 +52,6 @@ const ListFav = () => {
         // eslint-disable-next-line
     }, [favorites]);
 
-    const handleSwitchNavBar = () => {
-        dispatch(set_activeHome(true));
-        dispatch(set_activeHis(false));
-        dispatch(set_activeFav(false));
-    };
-
     if (favList.length > 0) {
         return (
             <div css={listFavDisplayCss}>
@@ -60,13 +62,13 @@ const ListFav = () => {
                             key={index}
                             onClick={() => dispatch(current_weather(item.location.name))}
                         >
-                            <Link to="/" css={textDecorationCss} onClick={handleSwitchNavBar()}>
+                            <Link to="/" css={textDecorationCss}>
                                 <ListItemsFavWeather hasItem={item} />
                             </Link>
                         </div>
                     );
                 })}
-                <div css={favWeatherDefaultItem}>
+                <div css={handleDisable()}>
                     <Link to="/favorites/add-favorite">
                         <div css={favWeatherItemAdd}>
                             <AddIcon css={favWeatherAddIcon} />
