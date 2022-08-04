@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ListItemsFavWeather from './component/ListItems';
@@ -22,6 +22,7 @@ const ListFav = () => {
     const favorites = useSelector((state) => state.addFav.value);
     const favList = useSelector((state) => state.addFav.favList);
     const dispatch = useDispatch();
+
     const handleDisable = () => {
         if (favList.length >= 3) {
             return favWeatherDisable;
@@ -30,7 +31,7 @@ const ListFav = () => {
         }
     };
 
-    useEffect(() => {
+    const handleCallback = useCallback(() => {
         favorites.map((fav) => {
             return axios
                 .get(`https://api.weatherapi.com/v1/current.json?key=f0106112791a4d5486c104334223105&`, {
@@ -46,11 +47,13 @@ const ListFav = () => {
                 .catch((err) => {
                     alert('Có lỗi!');
                     console.error(err);
-                })
-                .finally(() => {});
+                });
         });
-        // eslint-disable-next-line
     }, [favorites]);
+
+    useEffect(() => {
+        handleCallback();
+    }, []);
 
     if (favList.length > 0) {
         return (

@@ -35,7 +35,7 @@ const ExtendNavBar = () => {
 
     return (
         <div css={sliderWidthCss}>
-            <Link to="/historical-weather" onClick={handleClickHome} css={textDecorationCss}>
+            <Link to="/" onClick={handleClickHome} css={textDecorationCss}>
                 <div css={navbarDisplayItemDetail}>
                     {isActiveHome ? <span css={navbarActionItemDetail}></span> : <span></span>}
                     <span>
