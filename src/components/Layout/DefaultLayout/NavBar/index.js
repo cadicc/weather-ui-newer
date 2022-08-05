@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import MinNavBar from './component/MinNavBar';
 import ExtendNavBar from './component/ExtendNavBar';
-import { navbarPosition, navbarPositionDetail } from '~/common/styles.ts';
+import { navbarPositionDetail } from '~/common/styles.ts';
 
 const NavBar = () => {
     const swap = useSelector((state) => state.swap.status);
@@ -10,9 +10,7 @@ const NavBar = () => {
     return (
         <div>
             {swap ? (
-                <div css={navbarPosition}>
-                    <MinNavBar />
-                </div>
+                <MinNavBar />
             ) : (
                 <div css={navbarPositionDetail}>
                     <ExtendNavBar />

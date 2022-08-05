@@ -28,8 +28,14 @@ const ListItemsFavWeather = (props) => {
     // const handleSwitchNavBar = () => {
     // dispatch(SET_HOME_ACTIVE(ACTIVE_TRUE));
     // };
+
     return (
-        <div css={favWeatherCurrentPad} onClick={dispatch(SET_HOME_ACTIVE(ACTIVE_TRUE))}>
+        <div
+            css={favWeatherCurrentPad}
+            onClick={() => {
+                dispatch(SET_HOME_ACTIVE(ACTIVE_TRUE));
+            }}
+        >
             <span
                 css={favWeatherCurrentFont}
             >{`${props.hasItem.location.name}, ${props.hasItem.location.country}`}</span>

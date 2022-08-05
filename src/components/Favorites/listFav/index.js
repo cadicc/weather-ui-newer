@@ -17,11 +17,14 @@ import {
 // import { set_activeFav, set_activeHis, set_activeHome } from '~/features/activeNavBar/activeHome';
 import { current_weather } from '~/features/Current';
 import { get_fav } from '~/features/favorites/addFavorite';
+import useAxiosListFavorites from '~/service/favorites/ListFavorite';
 
 const ListFav = () => {
     const favorites = useSelector((state) => state.addFav.value);
     const favList = useSelector((state) => state.addFav.favList);
     const dispatch = useDispatch();
+
+    const { getListFavorites } = useAxiosListFavorites();
 
     const handleDisable = () => {
         if (favList.length >= 3) {
@@ -41,8 +44,9 @@ const ListFav = () => {
                     },
                 })
                 .then((res) => {
-                    localStorage.setItem('nameFav', JSON.stringify(res.data));
+                    // localStorage.setItem('nameFav', JSON.stringify(res.data));
                     dispatch(get_fav(res.data));
+                    console.log(res.data);
                 })
                 .catch((err) => {
                     alert('Có lỗi!');
@@ -54,6 +58,8 @@ const ListFav = () => {
     useEffect(() => {
         handleCallback();
     }, []);
+
+    console.log(window.location.href);
 
     if (favList.length > 0) {
         return (

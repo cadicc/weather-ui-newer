@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Container } from '@mui/material';
 import * as moment from 'moment';
-import { useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import {
     CLEAR,
     HEAVY_RAIN_AND_THUNDER,

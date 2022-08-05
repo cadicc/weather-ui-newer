@@ -62,3 +62,34 @@ const DailyWeather = (props) => {
     );
 };
 export default DailyWeather;
+
+// /** @jsxImportSource @emotion/react */
+// import { useDispatch, useSelector } from 'react-redux';
+// import { dailyCss } from '~/common/styles.ts';
+// import Day from './Day';
+// import React, { useState } from 'react';
+
+// const DailyWeather = (props) => {
+//     const [nameOfDay, setNameOfDay] = useState()
+
+//     const funcSetDay= (name) => {
+//         console.log(name)
+//         setNameOfDay(name)
+//     }
+
+//     return (
+//         <div>
+//             <h2>Daily</h2>
+//             <div css={dailyCss}>
+//                 {props.onForecastWeather &&
+//                     props.onForecastWeather.map((fore, index) => (
+//                         <React.Fragment key={index}>
+//                             <Day fore={fore} index={index} onclick={funcSetDay}/>
+//                         </React.Fragment>
+//                     ))}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default DailyWeather;

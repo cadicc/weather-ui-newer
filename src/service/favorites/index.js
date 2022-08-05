@@ -17,7 +17,8 @@ const useAxiosFav = () => {
                 getListFav(res.data);
             })
             .catch((err) => {
-                throw new Error('Sai cu phap', err);
+                alert('Có lỗi!');
+                console.log(err);
             });
     };
     useEffect(() => {
